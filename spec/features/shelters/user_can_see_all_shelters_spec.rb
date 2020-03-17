@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe "test shelters index page", type: :feature do
   it "shows all shelter names on index page" do
     parkside_shelter = Shelter.create(name: "Parkside Shelter",
-                                      address: "1234 Main Street",
+                                      address: "1234 Market Street",
                                       city: "Denver",
                                       state: "Colorado",
                                       zip: "80212")
 
     lakeside_shelter = Shelter.create(name: "Lakeside Shelter",
-                                      address: "8912 Market Street",
-                                      city: "Lakewood",
-                                      state: "Colorado",
+                                      address: "2914 Freetown Road",
+                                      city: "Columbia",
+                                      state: "Maryland",
                                       zip: "80219")
 
     visit "/shelters"
