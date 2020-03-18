@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "as a visitor", type: :feature do
   it "can visit /shelters and see names of all shelters" do
-    shelter_1 = Shelter.new(
+    shelter_1 = Shelter.create(
                               name: "shelter 1",
                               address: "111 shelter dr",
                               city: "Shelterville",
                               state: "Sheltelvania",
                               zip: "01234"
                             )
-    shelter_2 = Shelter.new(
+    shelter_2 = Shelter.create(
                               name: "shelter 2",
                               address: "222 shelter dr",
                               city: "Mt. Shelty",
