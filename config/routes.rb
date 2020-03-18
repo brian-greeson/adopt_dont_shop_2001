@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'shelters', to: 'shelters#index'
 
-  get 'shelters/create'
+  get 'shelters/new', to: 'shelters#new'
 
   get 'shelters/:id', to: 'shelters#show'
 
