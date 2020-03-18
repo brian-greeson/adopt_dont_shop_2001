@@ -15,4 +15,7 @@ class SheltersController < ApplicationController
 
   def destroy
   end
+
+  def new
+  end
 end
