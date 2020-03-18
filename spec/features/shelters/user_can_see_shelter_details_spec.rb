@@ -24,7 +24,7 @@ RSpec.describe "as a user", type: :feature do
                                          #{shelter_1.state},
                                          #{shelter_1.zip}")
 
- visit "/shelters/#{shelter_1.id}"
+ visit "/shelters/#{shelter_2.id}"
   expect(page).to have_content(shelter_2.name)
   expect(page).to have_content("Address: #{shelter_2.address},
                                         #{shelter_2.city},
