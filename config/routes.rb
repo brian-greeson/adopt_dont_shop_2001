@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'shelters/index'
+  get 'shelters', to: 'shelters#index'
 
   get 'shelters/create'
 
