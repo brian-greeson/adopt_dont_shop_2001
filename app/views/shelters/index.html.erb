@@ -1,3 +1,4 @@
 <h1>All Shelters</h1>
-<h1>This Pass?</h1>
-<p>Find me in app/views/shelters/index.html.erb</p>
+<% @shelters.each do |shelter| %>
+<h3><%= shelter.name %></h3>
+<% end %>
