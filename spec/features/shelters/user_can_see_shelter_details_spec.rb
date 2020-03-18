@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe "as a visitor", type: :feature do
-  it "can visit /shelters and see names of all shelters" do
+RSpec.describe "as a user", type: :feature do
+  it "can visit /shelters/:shelter_id", type: :feature do
     shelter_1 = Shelter.create(
                               name: "shelter 1",
                               address: "111 shelter dr",
@@ -17,13 +17,18 @@ RSpec.describe "as a visitor", type: :feature do
                               zip: "43210"
                             )
 
-  visit "/shelters"
-
-  expect(page).to have_css('h1', text: 'All Shelters')
+  visit "/shelters/#{shelter_1.id}"
   expect(page).to have_content(shelter_1.name)
+  expect(page).to have_content("Address: #{shelter_1.address},
+                                         #{shelter_1.city},
+                                         #{shelter_1.state},
+                                         #{shelter_1.zip}")
 
+ visit "/shelters/#{shelter_1.id}"
   expect(page).to have_content(shelter_2.name)
-
+  expect(page).to have_content("Address: #{shelter_2.address},
+                                        #{shelter_2.city},
+                                        #{shelter_2.state},
+                                        #{shelter_2.zip}")
   end
-
 end
