@@ -6,7 +6,8 @@ class SheltersController < ApplicationController
   def create
   end
 
-  def read
+  def show
+    @shelter = Shelter.find(params[:id])
   end
 
   def update

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'shelters/create'
 
-  get 'shelters/read'
+  get 'shelters/:id', to: 'shelters#show'
 
   get 'shelters/update'
 

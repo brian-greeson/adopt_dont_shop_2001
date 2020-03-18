@@ -16,12 +16,13 @@ RSpec.describe SheltersController, type: :controller do
     end
   end
 
-  describe "GET #read" do
-    it "returns http success" do
-      get :read
-      expect(response).to have_http_status(:success)
-    end
-  end
+# This is just making sure there is a route with show?
+  # describe "GET #show" do
+  #   it "returns http success" do
+  #     get :show
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
 
   describe "GET #update" do
     it "returns http success" do
