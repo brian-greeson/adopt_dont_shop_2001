@@ -1,0 +1,16 @@
+<h1>Update Shelter</h1>
+<form class="shelter_details" action="/shelters/<%= @shelter.id %>/update" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="name">Name: </label>
+  <input type="text" name="shelter[name]" value="<%= @shelter.name %>">
+  <label for="address">Adress: </label>
+  <input type="text" name="shelter[address]" value="<%= @shelter.address %>">
+  <label for="city">City: </label>
+  <input type="text" name="shelter[city]" value="<%= @shelter.city %>">
+  <label for="state">State: </label>
+  <input type="text" name="shelter[state]" value="<%= @shelter.state %>">
+  <label for="zip">ZipCode: </label>
+  <input type="text" name="shelter[zip]" value="<%= @shelter.zip %>">
+  <input type="submit" value="Submit">
+
+</form>
