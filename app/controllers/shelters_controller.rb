@@ -19,6 +19,19 @@ class SheltersController < ApplicationController
   end
 
   def update
+    Shelter.find(params[:id]).update(
+                                      name: params[:shelter][:name],
+                                      address: params[:shelter][:address],
+                                      city: params[:shelter][:city],
+                                      state: params[:shelter][:state],
+                                      zip: params[:shelter][:zip]
+                                    )
+
+    redirect_to '/shelters'
+  end
+
+  def edit
+    @shelter = Shelter.find(params[:id])
   end
 
   def destroy
