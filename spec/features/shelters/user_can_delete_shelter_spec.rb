@@ -13,14 +13,13 @@ RSpec.describe "when user", type: :feature do
     visit "/shelters/#{shelter_1.id}"
 
     expect(page).to have_link('Delete Shelter')
-    expect(page.find('Delete Shelter').method).to eq 'DELETE'
   end
 
   it "clicks delete link a delete request is sent" do
     visit "/shelters/#{shelter_1.id}"
 
     click_link 'Delete Shelter'
-
+    binding.pry
     expect(page).to have_current_path('/shelters')
     expect(page).to have_no_content(shelter_1.name)
   end
