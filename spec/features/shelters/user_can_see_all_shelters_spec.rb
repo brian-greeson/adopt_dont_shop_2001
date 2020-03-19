@@ -15,7 +15,7 @@ RSpec.describe "test shelters index page", type: :feature do
                                       zip: "21044")
 
     visit "/shelters"
-    
+
     expect(page).to have_content(parkside_shelter.name)
     expect(page).to have_content(lakeside_shelter.name)
   end

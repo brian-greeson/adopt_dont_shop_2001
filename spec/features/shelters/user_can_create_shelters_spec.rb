@@ -4,6 +4,7 @@ RSpec.describe "test user can create new shelters", type: :feature do
   it "creates a shelter" do
 
     visit "/shelters"
+    have_link "New Shelter"
     click_link "New Shelter"
 
     expect(current_path).to eq("/shelters/new")
@@ -13,16 +14,21 @@ RSpec.describe "test user can create new shelters", type: :feature do
     fill_in "City", with: "Philadelphia"
     fill_in "State", with: "Pennsylvania"
     fill_in "Zip", with: "19019"
-    click_button "Submit"
+    click_button "Create Shelter"
 
     expect(current_path).to eq("/shelters")
     expect(page).to have_content("Downtown Puppy Shelter")
 
-    click_link "Downtown Puppy Shelter"
-    expect(page).to have_content("Downtown Puppy Shelter")
-    expect(page).to have_content("4567 Broad Street")
-    expect(page).to have_content("Philadelphia")
-    expect(page).to have_content("Pennsylvania")
-    expect(page).to have_content("19019")
+    save_and_open_page
+
+    # click_link "Downtown Puppy Shelter"
+    # expect(page).to have_content("Downtown Puppy Shelter")
+    # expect(page).to have_content("4567 Broad Street")
+    # expect(page).to have_content("Philadelphia")
+    # expect(page).to have_content("Pennsylvania")
+    # expect(page).to have_content("19019")
   end
 end
+
+#link_to
+#overwrites standard anchor tag link
