@@ -22,7 +22,7 @@ RSpec.describe "when user", type: :feature do
     expect(page).to have_current_path("/shelters/#{shelter_1.id}/edit")
   end
 
-  it "form information and clicks create shelter, new shelter is created" do
+  it "enters form information and clicks create shelter, new shelter is created" do
     shelter_2 = Shelter.new(
                               name: "Sheltertron 5000",
                               address: "place",
@@ -32,17 +32,17 @@ RSpec.describe "when user", type: :feature do
                             )
     visit "/shelters/#{shelter_1.id}/edit"
 
-    expect(page).to have_content(shelter_1.name)
-    expect(page).to have_content(shelter_1.address)
-    expect(page).to have_content(shelter_1.city)
-    expect(page).to have_content(shelter_1.state)
-    expect(page).to have_content(shelter_1.zip)
+    expect(find_field("shelter[name]").value).to have_content(shelter_1.name)
+    expect(find_field("shelter[address]").value).to have_content(shelter_1.address)
+    expect(find_field("shelter[city]").value).to have_content(shelter_1.city)
+    expect(find_field("shelter[state]").value).to have_content(shelter_1.state)
+    expect(find_field("shelter[zip]").value).to have_content(shelter_1.zip)
 
-    expect(page).to have_no_content(shelter_2.name)
-    expect(page).to have_no_content(shelter_2.address)
-    expect(page).to have_no_content(shelter_2.city)
-    expect(page).to have_no_content(shelter_2.state)
-    expect(page).to have_no_content(shelter_2.zip)
+    expect(find_field("shelter[name]").value).to have_no_content(shelter_2.name)
+    expect(find_field("shelter[address]").value).to have_no_content(shelter_2.address)
+    expect(find_field("shelter[city]").value).to have_no_content(shelter_2.city)
+    expect(find_field("shelter[state]").value).to have_no_content(shelter_2.state)
+    expect(find_field("shelter[zip]").value).to have_no_content(shelter_2.zip)
 
     page.fill_in 'shelter[name]', with: shelter_2.name
     page.fill_in 'shelter[address]', with: shelter_2.address
