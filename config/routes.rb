@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   post '/shelters/:id/update', to: 'shelters#update'
 
-  get 'shelters/destroy'
+  delete 'shelters/:id', to: 'shelters#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index'

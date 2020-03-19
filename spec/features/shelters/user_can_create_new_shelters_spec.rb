@@ -39,7 +39,5 @@ RSpec.describe "when user", type: :feature do
     expect(Shelter.last.city).to eq(shelter_1.city)
     expect(Shelter.last.state).to eq(shelter_1.state)
     expect(Shelter.last.zip).to eq(shelter_1.zip)
-
   end
-
 end
