@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "as a visitor", type: :feature do
-  it "can visit /shelters and see names of all shelters" do
+  it "can visit /pets and see names,images,age,sex,shelter of all pets" do
     pet_1 = Pet.create(
                               name: "pet 1",
                               image: "/assets/images/5558679305.jpg",
@@ -17,7 +17,7 @@ RSpec.describe "as a visitor", type: :feature do
                               shelter_id: 1
                             )
 
-  visit "/shelters"
+  visit "/pets"
 
   expect(page).to have_css('h1', text: 'All Pets')
   expect(page).to have_content(pet_1.name)

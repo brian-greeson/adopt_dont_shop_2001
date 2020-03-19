@@ -5,7 +5,7 @@ class CreatePets < ActiveRecord::Migration[5.1]
       t.string :image
       t.integer :age
       t.string :sex
-      t.references :shelter_id, foreign_key: true
+      t.references :shelters, foreign_key: true
     end
   end
 end
