@@ -1,5 +1,5 @@
 <h1>Update Shelter</h1>
-<form class="shelter_details" action="/shelters/update" method="post">
+<form class="shelter_details" action="/shelters/<%= @shelter.id %>/update" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label for="name">Name: </label>
   <input type="text" name="shelter[name]" value="<%= @shelter.name %>">
