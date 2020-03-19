@@ -1,6 +1,6 @@
 <h1>All Pets</h1>
 <% @pets.each do |pet| %>
 <h3><%= pet.name %></h3>
-<ul>
-  
-</ul>
+<img src=<%= pet.image %> alt="NotFound">
+<p><%= pet.name %> is a <%= pet.age %> year old <%= pet.sex %> available for adoption from the <%= pet.shelter.name %> shelter.</p>
+<% end %>
