@@ -1,21 +1,29 @@
 require "rails_helper"
 
 RSpec.describe "when user", type: :feature do
-  shelter_1 = Shelter.create(
-                            name: "shelter 1",
-                            address: "111 shelter dr",
-                            city: "Shelterville",
-                            state: "Sheltelvania",
-                            zip: "01234"
-                          )
+
 
   it "visit show shelter page can click update shelter link" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
     visit "/shelters/#{shelter_1.id}"
 
     expect(page).to have_link('Update Shelter')
   end
 
   it "clicks on create shelter link is shown update shelter form" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
     visit "/shelters/#{shelter_1.id}"
     click_link 'Update Shelter'
 
@@ -23,6 +31,13 @@ RSpec.describe "when user", type: :feature do
   end
 
   it "enters form information and clicks create shelter, new shelter is created" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
     shelter_2 = Shelter.new(
                               name: "Sheltertron 5000",
                               address: "place",
@@ -61,5 +76,4 @@ RSpec.describe "when user", type: :feature do
     expect(page).to have_content(shelter_2.state)
     expect(page).to have_content(shelter_2.zip)
   end
-
-  end
+end
