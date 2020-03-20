@@ -23,7 +23,7 @@ RSpec.describe "test user can update shelters", type: :feature do
     fill_in "Zip", with: "19019"
 
     click_button "Submit"
-
+    
     expect(current_path).to eq("/shelters/#{shelter_1.id}")
     expect(page).to have_content("Downtown Puppy Shelter")
     expect(page).to_not have_content("Paula's Precious Puppy Shelter")

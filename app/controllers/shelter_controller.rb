@@ -20,6 +20,17 @@ class ShelterController < ApplicationController
     @shelter_to_edit = Shelter.find(params[:id])
   end
 
+  def update
+    shelter_to_edit = Shelter.update(params[:id], shelter_params)
+    redirect_to "/shelters/#{params[:id]}"
+  end
+
+  def destroy
+    shelter_to_delete = Shelter.find(params[:id])
+    shelter_to_delete.destroy
+    redirect_to "/shelters/"
+  end
+
   private
 
   def shelter_params

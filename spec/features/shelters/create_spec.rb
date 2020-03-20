@@ -20,6 +20,3 @@ RSpec.describe "test user can create new shelters", type: :feature do
     expect(page).to have_content("Downtown Puppy Shelter")
   end
 end
-
-#link_to
-#overwrites standard anchor tag link
