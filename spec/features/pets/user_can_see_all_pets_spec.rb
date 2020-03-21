@@ -30,8 +30,8 @@ RSpec.describe "as a visitor", type: :feature do
       within("article.pet_#{pet.id}_details") do
         expect(find("a.name").text).to eq(pet.name)
         expect(find("img")[:src]).to eq(pet.image)
-        expect(find("a.sex").text).to eq(pet.sex.to_s)
-        expect(find("a.age").text).to eq(pet.age.to_s)
+        expect(find("p.sex").text).to eq(pet.sex.to_s)
+        expect(find("p.age").text).to eq(pet.age.to_s)
         expect(find("a.shelter").text).to eq(pet.shelter.name)
       end
     end
