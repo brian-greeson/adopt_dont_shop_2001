@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "test pets index page", type: :feature do
-  it "shows all pet names on index page" do
+RSpec.describe "test can see adoptable pets from specific shelter", type: :feature do
+  it "shows adoptable pets for specific shelter with id" do
     parkside_shelter = Shelter.create(name: "Parkside Shelter",
                                       address: "1234 Market Street",
                                       city: "Denver",
@@ -28,20 +28,17 @@ RSpec.describe "test pets index page", type: :feature do
                         sex: "Female",
                         shelter: lakeside_shelter)
 
-    visit "/pets"
+    visit "/shelters/#{parkside_shelter.id}/pets"
+    save_and_open_page
 
     expect(page).to have_css("img[src*='#{caesar.image}']")
     expect(page).to have_content(caesar.name)
-    expect(page).to have_content(caesar.city)
     expect(page).to have_content(caesar.approx_age)
     expect(page).to have_content(caesar.sex)
-    expect(page).to have_content(caesar.shelter.name)
 
-    expect(page).to have_css("img[src*='#{livia.image}']")
-    expect(page).to have_content(livia.name)
-    expect(page).to have_content(livia.city)
-    expect(page).to have_content(livia.approx_age)
-    expect(page).to have_content(livia.sex)
-    expect(page).to have_content(livia.shelter.name)
+    expect(page).to_not have_css("img[src*='#{livia.image}']")
+    expect(page).to_not have_content(livia.name)
+    expect(page).to_not have_content(livia.approx_age)
+    expect(page).to_not have_content(livia.sex)
   end
 end
