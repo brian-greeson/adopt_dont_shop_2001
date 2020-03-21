@@ -19,7 +19,6 @@ class PetsController < ApplicationController
   def create
     Pet.create(
         name:   params[:name],
-        image:  params[:image],
         age:    params[:age],
         sex:    params[:sex],
         description:  params[:description],
