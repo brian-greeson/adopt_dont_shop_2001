@@ -37,7 +37,7 @@ RSpec.describe "as a visitor", type: :feature do
                               sex: "arizona",
                               shelter_id: shelter_2.id
                             )
-    visit "/pets/#{pet_1.id}"
+    visit "/shelters/#{shelter_1.id}/pets"
 
 
     within("article.pet_#{pet_1.id}_details") do
@@ -46,9 +46,14 @@ RSpec.describe "as a visitor", type: :feature do
       expect(find("p.sex").text).to eq(pet_1.sex.to_s)
       expect(find("p.age").text).to eq(pet_1.age.to_s)
       expect(find("a.shelter").text).to eq(pet_1.shelter.name)
-      expect(find("p.status").text).to eq(pet_1.adoption_status)
     end
-    expect(page).to have_no_content(pet_2.name)
+    within("article.pet_#{pet_2.id}_details") do
+      expect(find("a.name").text).to eq(pet_2.name)
+      expect(find("img")[:src]).to eq(pet_2.image)
+      expect(find("p.sex").text).to eq(pet_2.sex.to_s)
+      expect(find("p.age").text).to eq(pet_2.age.to_s)
+      expect(find("a.shelter").text).to eq(pet_2.shelter.name)
+    end
     expect(page).to have_no_content(pet_3.name)
   end
 end

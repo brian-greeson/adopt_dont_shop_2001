@@ -9,11 +9,15 @@ Rails.application.routes.draw do
 
   get '/shelters/:id/edit', to: 'shelters#edit'
 
-  post '/shelters/:id/update', to: 'shelters#update'
+  put '/shelters/:id/update', to: 'shelters#update'
 
   delete '/shelters/:id', to: 'shelters#destroy'
 
   get '/pets', to: 'pets#index'
+
+  get '/pets/:id', to: 'pets#show'
+
+  get '/shelters/:id/pets', to: 'pets#shelter_pets'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index'
