@@ -13,18 +13,21 @@ class PetsController < ApplicationController
   end
 
   def new
+    @shelter_id = params[:id]
   end
 
-  # def create
-  #   Pet.create(
-  #     name:     params[:pet][:name],
-  #     image:  params[:pet][:image],
-  #     age:     params[:pet][:age],
-  #     sex:    params[:pet][:sex],
-  #     shelter_id:      params[:pet][:shelter_id]
-  #   )
-  #   redirect_to '/pets'
-  # end
+  def create
+    Pet.create(
+        name:   params[:name],
+        image:  params[:image],
+        age:    params[:age],
+        sex:    params[:sex],
+        description:  params[:description],
+        shelter_id:   params[:shelter_id],
+        image: "/assets/" + params[:pet][:image]
+    )
+    redirect_to "/shelters/#{params[:shelter_id]}/pets"
+  end
   #
   #
   # def update
