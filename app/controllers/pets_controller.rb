@@ -14,16 +14,22 @@ class PetsController < ApplicationController
 
   def new
     @shelter_id = params[:id]
+    @pet = Pet.new
   end
 
   def create
+    uploaded_image = params[:pet][:image]
+    File.open(Rails.root.join('public', uploaded_image.original_filename), 'wb') do |file|
+      file.write(uploaded_image.read)
+    end
+
     Pet.create(
-        name:   params[:name],
-        age:    params[:age],
-        sex:    params[:sex],
-        description:  params[:description],
+        name:   params[:pet][:name],
+        age:    params[:pet][:age],
+        sex:    params[:pet][:sex],
+        description:  params[:pet][:description],
         shelter_id:   params[:shelter_id],
-        image: "/assets/" + params[:pet][:image]
+        image: uploaded_image.original_filename
     )
     redirect_to "/shelters/#{params[:shelter_id]}/pets"
   end
