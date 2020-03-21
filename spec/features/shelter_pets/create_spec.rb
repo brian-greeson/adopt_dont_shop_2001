@@ -1,42 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe "test can add adoptable pets to specific shelter", type: :feature do
-  it "test can add adoptable pets to specific shelter" do
-    parkside_shelter = Shelter.create(name: "Parkside Shelter",
-                                      address: "1234 Market Street",
-                                      city: "Denver",
-                                      state: "Colorado",
-                                      zip: "80230")
+RSpec.describe "test new pet can be created for specific shelter", type: :feature do
+  it "creates new adoptable pet for shelter" do
+    beachside_shelter = Shelter.create(name: "Beachside Shelter",
+                                      address: "1234 Sandy Street",
+                                      city: "Rehoboth Beach",
+                                      state: "Delaware",
+                                      zip: "19971")
 
-    lakeside_shelter = Shelter.create(name: "Lakeside Shelter",
-                                      address: "2914 Freetown Road",
-                                      city: "Columbia",
-                                      state: "Maryland",
-                                      zip: "21044")
+    visit "/shelters/#{beachside_shelter.id}/pets"
 
-    caesar = Pet.create(image: "https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg",
-                        name: "Caesar",
-                        approx_age: "4",
-                        city: "Denver",
-                        sex: "Male",
-                        shelter: parkside_shelter)
+    click_link "Create Pet"
 
-    livia = Pet.create(image: "https://en.bcdn.biz/Images/2018/6/6/ae2e9240-c42a-4a81-b6d8-ac65af25b827.jpg",
-                        name: "Livia",
-                        approx_age: "5",
-                        city: "Columbia",
-                        sex: "Female",
-                        shelter: lakeside_shelter)
+    expect(current_path).to eq("/shelters/#{beachside_shelter.id}/pets/new")
 
-    visit "/shelters/#{parkside_shelter.id}/pets"
-    # click_link "Create Pet"
-    #
-    # fill_in "Image", with: "https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/08/alaskan-malamute-card-medium.jpg?bust=1535569398"
-    # fill_in "Name", with: "Cicero"
-    # fill_in "Description" with: "Cicero loves the outdoors, and needs a best friend!"
-    # fill_in "Approximate Age", with: "10"
-    # fill_in "Sex", with: "Male"
-    #
-    # click_button "Create Shelter"
+    fill_in "Image", with: "https://cdn2-www.dogtime.com/assets/uploads/gallery/newfoundland-dogs-and-puppies/newfoundland-dogs-puppies-1.jpg"
+    fill_in "Name", with: "Augustus"
+    fill_in "Approx age", with: "12"
+    fill_in "Description", with: "Augustus is former guide dog looking for a new home"
+    fill_in "Sex", with: "Male"
+
+    click_button "Create Pet"
+
+    expect(current_path).to eq("/shelters/#{beachside_shelter.id}/pets")
+
+    expect(page).to have_content("Augustus")
+    expect(page).to have_content("Adoptable")
   end
 end

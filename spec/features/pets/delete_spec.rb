@@ -31,8 +31,6 @@ RSpec.describe "test delete pets", type: :feature do
                         visit "/pets/#{caesar.id}"
                         click_link "Delete Pet"
 
-                        save_and_open_page
-
     expect(page).to have_content(livia.name)
     expect(page).to_not have_content(caesar.name)
   end
