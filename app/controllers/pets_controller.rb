@@ -4,7 +4,8 @@ class PetsController < ApplicationController
   end
 
   def shelter_pets
-    @pets = Pet.where(shelter_id: params[:id])
+    @shelter_id = params[:id]
+    @pets = Pet.where(shelter_id: @shelter_id)
   end
 
   def show
