@@ -29,7 +29,6 @@ RSpec.describe "test can see adoptable pets from specific shelter", type: :featu
                         shelter: lakeside_shelter)
 
     visit "/shelters/#{parkside_shelter.id}/pets"
-    save_and_open_page
 
     expect(page).to have_css("img[src*='#{caesar.image}']")
     expect(page).to have_content(caesar.name)
