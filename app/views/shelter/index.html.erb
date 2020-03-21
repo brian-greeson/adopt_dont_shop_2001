@@ -1,7 +1,15 @@
 <h1> All Shelters </h1>
 
 <% @shelters.each do |shelter| %>
-  <h5><%= shelter.name %></h5>
+  <section id="shelter-<%=shelter.id%>">
+    <h5><%= shelter.name %></h5>
+    <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit"%>
+  </section>
 <% end %>
-
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <%= link_to "New Shelter", "/shelters/new" %>

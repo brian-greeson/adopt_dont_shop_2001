@@ -15,8 +15,17 @@ RSpec.describe "test shelters index page", type: :feature do
                                       zip: "21044")
 
     visit "/shelters"
+    
+    save_and_open_page
 
     expect(page).to have_content(parkside_shelter.name)
     expect(page).to have_content(lakeside_shelter.name)
+
+    within "#shelter-#{parkside_shelter.id}" do
+      click_link "Edit Shelter"
+    end
+
+
+    expect(current_path).to eq("/shelters/#{parkside_shelter.id}/edit")
   end
 end
