@@ -32,10 +32,7 @@ RSpec.describe "test pets show page", type: :feature do
                         description: "She loves to snuggle up and be rubbed behind her ears!",
                         status: "Adoptable")
 
-
     visit "/pets/#{caesar.id}"
-
-    save_and_open_page
 
     expect(page).to have_css("img[src*='#{caesar.image}']")
     expect(page).to have_content(caesar.name)
