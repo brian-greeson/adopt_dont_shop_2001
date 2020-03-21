@@ -3,6 +3,13 @@ class PetsController < ApplicationController
     @pets = Pet.all
   end
 
+  def shelter_pets
+    @pets = Pet.where(shelter_id: params[:id])
+  end
+
+  def show
+    @pet = Pet.find(params[:id])
+  end
   # def create
   #   Pet.create(
   #     name:     params[:pet][:name],
@@ -14,9 +21,6 @@ class PetsController < ApplicationController
   #   redirect_to '/pets'
   # end
   #
-  # def show
-  #   @pet = Pet.find(params[:id])
-  # end
   #
   # def update
   #   Pet.find(params[:id]).update(

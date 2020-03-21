@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "as a visitor", type: :feature do
-  xit "can visit /shelter/:id/pets and see details of pets available at that shelter" do
+  it "can visit /shelter/:id/pets and see details of pets available at that shelter" do
     shelter_1 = Shelter.create(
                               name: "shelter 1",
                               address: "111 shelter dr",
@@ -18,35 +18,42 @@ RSpec.describe "as a visitor", type: :feature do
                             )
     pet_1 = Pet.create(
                               name: "pet 1",
-                              image: "/assets/images/5558679305.jpg",
+                              image: "/assets/5558679305.jpg",
                               age: 9,
                               sex: "male",
                               shelter_id: shelter_1.id
                             )
     pet_2 = Pet.create(
                               name: "pet 2",
-                              image: "/assets/images/1140.jpg",
+                              image: "/assets/1140.jpg",
                               age: 2,
                               sex: "taco",
                               shelter_id: shelter_1.id
                             )
     pet_3 = Pet.create(
-                              name: "pet 2",
-                              image: "/assets/images/1140.jpg",
-                              age: 2,
-                              sex: "taco",
+                              name: "pet 3",
+                              image: "/assets/a643.jpg",
+                              age: 3,
+                              sex: "arizona",
                               shelter_id: shelter_2.id
                             )
     visit "/shelters/#{shelter_1.id}/pets"
 
-    Pet.all.each do |pet|
-      within("div.pet_#{pet.id}_details") do
-        expect("somthing").to eq(pet.name)
-        expect("somthing").to eq(pet.image)
-        expect("somthing").to eq(pet.sex)
-        expect("somthing").to eq(pet.age)
-        expect("somthing").to eq(pet.shelter.name)
-      end
+
+    within("article.pet_#{pet_1.id}_details") do
+      expect(find("a.name").text).to eq(pet_1.name)
+      expect(find("img")[:src]).to eq(pet_1.image)
+      expect(find("p.sex").text).to eq(pet_1.sex.to_s)
+      expect(find("p.age").text).to eq(pet_1.age.to_s)
+      expect(find("a.shelter").text).to eq(pet_1.shelter.name)
     end
+    within("article.pet_#{pet_2.id}_details") do
+      expect(find("a.name").text).to eq(pet_2.name)
+      expect(find("img")[:src]).to eq(pet_2.image)
+      expect(find("p.sex").text).to eq(pet_2.sex.to_s)
+      expect(find("p.age").text).to eq(pet_2.age.to_s)
+      expect(find("a.shelter").text).to eq(pet_2.shelter.name)
+    end
+    expect(page).to have_no_content(pet_3.name)
   end
 end
