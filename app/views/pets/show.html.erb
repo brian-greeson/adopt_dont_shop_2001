@@ -6,3 +6,6 @@
 <p> <%= @pet.sex %></p>
 <p> <%= @pet.shelter.name %></p>
 <p> <%= @pet.status %></p>
+
+<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
+<%= link_to "Delete Pet", "/pet/#{@pet.id}", method: :delete %>
