@@ -35,6 +35,8 @@ RSpec.describe "test pets show page", type: :feature do
 
     visit "/pets/#{caesar.id}"
 
+    save_and_open_page
+
     expect(page).to have_css("img[src*='#{caesar.image}']")
     expect(page).to have_content(caesar.name)
     expect(page).to have_content(caesar.approx_age)
@@ -49,7 +51,6 @@ RSpec.describe "test pets show page", type: :feature do
     expect(page).to_not have_content(livia.sex)
     expect(page).to_not have_content(livia.shelter.name)
     expect(page).to_not have_content(livia.description)
-    expect(page).to_not have_content(livia.status)
 
     visit "/pets/#{livia.id}"
 
@@ -67,6 +68,5 @@ RSpec.describe "test pets show page", type: :feature do
     expect(page).to_not have_content(caesar.sex)
     expect(page).to_not have_content(caesar.shelter.name)
     expect(page).to_not have_content(caesar.description)
-    expect(page).to_not have_content(caesar.status)
   end
 end
