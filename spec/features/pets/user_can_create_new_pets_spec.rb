@@ -41,7 +41,7 @@ RSpec.describe "when a user", type: :feature do
 
     pet_3 = Pet.new(
                       name: "pet 3",
-                      image: "/assets/5c6a.gif",
+                      image: "5c6a.gif",
                       age: 3,
                       sex: "arizona",
                       shelter_id: shelter_1.id,
@@ -49,10 +49,10 @@ RSpec.describe "when a user", type: :feature do
                       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
                     )
 
-    fill_in "name", with: pet_3.name
-    fill_in "age", with: pet_3.age
-    fill_in "sex", with: pet_3.sex
-    attach_file 'pet_image', '/Users/briangreeson/Pictures/puppies/5c6a.gif'
+    fill_in "pet[name]", with: pet_3.name
+    fill_in "pet[age]", with: pet_3.age
+    fill_in "pet[sex]", with: pet_3.sex
+    attach_file 'pet[image]', '/Users/briangreeson/Pictures/puppies/5c6a.gif'
     click_button "Create Pet"
 
     expect(page).to have_current_path("/shelters/#{shelter_1.id}/pets")
