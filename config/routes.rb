@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/shelters/:id/pets', to: 'pets#shelter_pets'
 
+  get '/shelters/:id/pets/new', to: 'pets#new'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'welcome#index'
 end

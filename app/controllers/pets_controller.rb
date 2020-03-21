@@ -11,6 +11,10 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
   end
+
+  def new
+  end
+
   # def create
   #   Pet.create(
   #     name:     params[:pet][:name],
@@ -45,6 +49,4 @@ class PetsController < ApplicationController
   #   redirect_to '/pets'
   # end
   #
-  # def new
-  # end
 end
