@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/shelters/:id/edit', to: 'shelters#edit'
 
-  post '/shelters/:id/update', to: 'shelters#update'
+  put '/shelters/:id/update', to: 'shelters#update'
 
   delete '/shelters/:id', to: 'shelters#destroy'
 

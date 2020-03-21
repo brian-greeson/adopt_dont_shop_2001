@@ -11,22 +11,29 @@ RSpec.describe "as a visitor", type: :feature do
                             )
     pet_1 = Pet.create(
                               name: "pet 1",
-                              image: "/assets/images/5558679305.jpg",
+                              image: "5558679305.jpg",
                               age: 9,
                               sex: "male",
                               shelter_id: shelter_1.id
                             )
     pet_2 = Pet.create(
                               name: "pet 2",
-                              image: "/assets/images/1140.jpg",
+                              image: "1140.jpg",
                               age: 2,
                               sex: "taco",
                               shelter_id: shelter_1.id
                             )
-  visit "/pets"
+    visit "/pets"
+    expect(page).to have_css('h1', text: 'All Pets')
 
-  expect(page).to have_css('h1', text: 'All Pets')
-  expect(page).to have_content(pet_1.name)
-  expect(page).to have_content(pet_2.name)
+    Pet.all.each do |pet|
+      within("article.pet_#{pet.id}_details") do
+        expect(find("a.name").text).to eq(pet.name)
+        expect(find("img")[:src]).to eq(pet.image)
+        expect(find("a.sex").text).to eq(pet.sex.to_s)
+        expect(find("a.age").text).to eq(pet.age.to_s)
+        expect(find("a.shelter").text).to eq(pet.shelter.name)
+      end
+    end
   end
 end

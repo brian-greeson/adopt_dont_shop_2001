@@ -30,7 +30,7 @@ RSpec.describe "when user", type: :feature do
     expect(page).to have_current_path("/shelters/#{shelter_1.id}/edit")
   end
 
-  it "enters form information and clicks create shelter, new shelter is created" do
+  it "enters form information and clicks update shelter, new shelter is updated" do
     shelter_1 = Shelter.create(
                               name: "shelter 1",
                               address: "111 shelter dr",
@@ -64,6 +64,7 @@ RSpec.describe "when user", type: :feature do
     page.fill_in 'shelter[city]', with: shelter_2.city
     page.fill_in 'shelter[state]', with: shelter_2.state
     page.fill_in 'shelter[zip]', with: shelter_2.zip
+    
     click_button 'Submit'
 
     expect(page).to have_current_path('/shelters')

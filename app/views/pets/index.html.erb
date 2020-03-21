@@ -1,6 +1,10 @@
 <h1>All Pets</h1>
 <% @pets.each do |pet| %>
-<h3><%= pet.name %></h3>
-<img src=<%= pet.image %> alt="NotFound">
-<p><%= pet.name %> is a <%= pet.age %> year old <%= pet.sex %> available for adoption from the <%= pet.shelter.name %> shelter.</p>
+  <article class="pet_<%= pet.id %>_details">
+    <img src="<%= pet.image %>" alt="NotFound">
+    <a class="name"href="/pets/<%= pet.id %>/"><%= pet.name %></a>
+    <p class="age"><%= pet.age %></p>
+    <p class="sex"><%= pet.sex %></p>
+    <a class="shelter"href="/shelters/<%= pet.shelter.id %>/"><%= pet.shelter.name %></a>
+  </article>>
 <% end %>
