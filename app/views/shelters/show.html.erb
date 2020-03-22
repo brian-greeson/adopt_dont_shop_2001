@@ -1,5 +1,5 @@
 <h1><%= @shelter.name %></h1>
-<p>Address: <%= @shelter.address %>, <%= @shelter.city %>, <%= @shelter.state %>, <%= @shelter.zip %></p>
+<p><%= @shelter.address %>, <%= @shelter.city %>, <%= @shelter.state %>, <%= @shelter.zip %></p>
 <a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a>
 <a href="/shelters/<%= @shelter.id %>" data-method="DELETE">Delete Shelter</a>
 <a href="/shelters/<%= @shelter.id %>/pets">Available Pets</a>
