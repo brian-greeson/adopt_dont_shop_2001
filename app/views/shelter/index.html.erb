@@ -1,3 +1,4 @@
+<%= link_to "Welcome Page", "/" %>
 <%= link_to "Pets Index", "/pets" %>
 <%= link_to "Shelters Index", "/shelters" %>
 
@@ -8,12 +9,10 @@
     <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %>
     <%= link_to "Edit Shelter", "/shelters/#{shelter.id}/edit" %>
     <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %>
+    <br/>
+    <br/>
+    <br/>
   </section>
 <% end %>
-</br>
-</br>
-</br>
-</br>
-</br>
 </br>
 <%= link_to "New Shelter", "/shelters/new" %>

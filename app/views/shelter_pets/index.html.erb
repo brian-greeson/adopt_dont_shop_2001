@@ -5,7 +5,8 @@
 
   <% @shelter.pets.each do |pet| %>
     <%= image_tag pet.image %>
-    <h5><%= pet.name %></h5>
+    <br/>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
     <h5><%= pet.approx_age %></h5>
     <h5><%= pet.sex %></h5>
   <% end %>
