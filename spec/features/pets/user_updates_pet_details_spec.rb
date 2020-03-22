@@ -56,7 +56,7 @@ RSpec.describe "when user " do
                     )
 
     visit "/pets/#{pet_1.id}/edit"
-    
+
     fill_in "pet[name]", with: pet_2.name
     fill_in "pet[age]", with: pet_2.age
     fill_in "pet[sex]", with: pet_2.sex
@@ -65,7 +65,7 @@ RSpec.describe "when user " do
     attach_file "pet[image]", "/Users/briangreeson/Pictures/puppies/5c6a.gif"
     click_on "Update Pet"
 
-    expect(page).to have_current_path("pets/#{pet_1.id}")
+    expect(page).to have_current_path("/pets/#{pet_1.id}")
 
     pet_result = Pet.find(pet_1.id)
 
