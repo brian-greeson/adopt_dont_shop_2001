@@ -1,15 +1,26 @@
-<%= link_to "Pets Index", "/pets" %>
-<%= link_to "Shelters Index", "/shelters" %>
-
-<h1>Adoptable Pets</h1>
-
-  <% @shelter.pets.each do |pet| %>
-    <%= image_tag pet.image %>
+<body style="background-color:lightblue;"">
+  <header style="font-family:arial;text-align:center">
+    <%= link_to "Pets Index", "/pets" %>
+    <%= link_to "Shelters Index", "/shelters" %>
+  </header>
     <br/>
-    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-    <h5><%= pet.approx_age %></h5>
-    <h5><%= pet.sex %></h5>
-  <% end %>
-
-<%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %>
-<%= link_to "Back to Shelter", "/shelters/#{@shelter.id}" %>
+  <h1 style="font-family:arial;font-size:40px;text-align:center">Adoptable Pets</h1>
+    <br/>
+  <div style="text-align:center;font-family:arial">
+    <% @shelter.pets.each do |pet| %>
+      <img style="img-align:center;"><%= image_tag pet.image %></img>
+        <br/>
+      <p style="font-size:30px"><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+        <h5 style="font-size:20px"><%= pet.approx_age %></h5>
+        <h5 style="font-size:20px"><%= pet.sex %></h5>
+      <% end %>
+        <br/>
+      <p style="font-size:25px"><%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %></p>
+        <br/>
+        <br/>
+      <%= link_to "Back to Shelter", "/shelters/#{@shelter.id}" %>
+        <br/>
+      <br/>
+    <br/>
+  <br/>
+</body>
