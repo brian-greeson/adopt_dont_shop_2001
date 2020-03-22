@@ -1,4 +1,5 @@
 <h1>Pet Detail</h1>
+<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>>
   <article class="pet_<%= @pet.id %>_details">
     <img src="/<%= @pet.image %>" alt="NotFound">
     <a class="name"href="/pets/<%= @pet.id %>/"><%= @pet.name %></a>
