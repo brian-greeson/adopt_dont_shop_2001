@@ -1,11 +1,11 @@
 <h1>Pet Detail</h1>
-<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
   <article class="pet_<%= @pet.id %>_details">
     <img src="/<%= @pet.image %>" alt="NotFound">
     <a class="name"href="/pets/<%= @pet.id %>/"><%= @pet.name %></a>
     <p class="age"><%= @pet.age %></p>
     <p class="sex"><%= @pet.sex %></p>
-    <%= link_to @pet.shelter.name, show_shelters_path(@pet.shelter), class: 'shelter' %>
     <p class="status"><%= @pet.adoption_status %></p>
+    <%= link_to @pet.shelter.name, show_shelters_path(@pet.shelter), class: 'shelter' %>
+    <%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
     <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: "delete" %>
   </article>
