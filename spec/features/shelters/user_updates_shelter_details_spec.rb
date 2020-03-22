@@ -16,6 +16,28 @@ RSpec.describe "when user", type: :feature do
     expect(page).to have_link('Update Shelter')
   end
 
+  it "visit shelters page can click update shelter link" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    shelter_2 = Shelter.create(
+                              name: "shelter 2",
+                              address: "22 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    visit "/shelters"
+
+    expect(page).to have_link 'Update Shelter', href: "/shelters/#{shelter_1.id}/edit"
+    expect(page).to have_link 'Update Shelter', href: "/shelters/#{shelter_2.id}/edit"
+
+  end
+
   it "clicks on create shelter link is shown update shelter form" do
     shelter_1 = Shelter.create(
                               name: "shelter 1",
@@ -64,7 +86,7 @@ RSpec.describe "when user", type: :feature do
     page.fill_in 'shelter[city]', with: shelter_2.city
     page.fill_in 'shelter[state]', with: shelter_2.state
     page.fill_in 'shelter[zip]', with: shelter_2.zip
-    
+
     click_button 'Submit'
 
     expect(page).to have_current_path('/shelters')
