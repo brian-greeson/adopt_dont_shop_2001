@@ -1,6 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe "as a visitor", type: :feature do
+  it "can click on available pets link on the shelter show page" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    visit "/shelters/#{shelter_1.id}/"
+
+    click_on "Available Pets"
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/pets")
+
+  end
+
   it "can visit /shelter/:id/pets and see details of pets available at that shelter" do
     shelter_1 = Shelter.create(
                               name: "shelter 1",
