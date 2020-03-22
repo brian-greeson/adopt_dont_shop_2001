@@ -37,19 +37,19 @@ class PetsController < ApplicationController
   def edit
     @pet = Pet.find(params[:id])
   end
-  #
-  #
-  # def update
-  #   Pet.find(params[:id]).update(
-  #     name:     params[:pet][:name],
-  #     image:  params[:pet][:image],
-  #     age:     params[:pet][:age],
-  #     sex:    params[:pet][:sex],
-  #     shelter_id:      params[:pet][:shelter_id]
-  #   )
-  #
-  #   redirect_to '/pets'
-  # end
+
+  def update
+    Pet.find(params[:id]).update(
+      binding.pry
+      # name:     params[:pet][:name],
+      # image:  params[:pet][:image],
+      # age:     params[:pet][:age],
+      # sex:    params[:pet][:sex],
+      # shelter_id:      params[:pet][:shelter_id]
+    )
+
+    redirect_to '/pets'
+  end
   #
   #
   # def destroy
