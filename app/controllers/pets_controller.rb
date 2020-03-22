@@ -19,9 +19,7 @@ class PetsController < ApplicationController
 
   def create
     uploaded_image = params[:pet][:image]
-    File.open(Rails.root.join('public', uploaded_image.original_filename), 'wb') do |file|
-      file.write(uploaded_image.read)
-    end
+    save_pet_image(uploaded_image)
 
     Pet.create(
         name:   params[:pet][:name],
@@ -39,9 +37,9 @@ class PetsController < ApplicationController
   end
 
   def update
-    if image = params[:pet][:image]
-      save_pet_image(image)
-      Pet.find(params[:id]).update(image:  image.original_filename)
+    if uploaded_image = params[:pet][:image]
+      save_pet_image(uploaded_image)
+      Pet.find(params[:id]).update(image:  uploaded_image.original_filename)
     end
 
     Pet.find(params[:id]).update(
