@@ -39,12 +39,13 @@ class PetsController < ApplicationController
   end
 
   def update
-    image = params[:pet][:image]
-    save_pet_image(image)
+    if image = params[:pet][:image]
+      save_pet_image(image)
+      Pet.find(params[:id]).update(image:  image.original_filename)
+    end
 
     Pet.find(params[:id]).update(
       name:     params[:pet][:name],
-      image:  image.original_filename,
       age:     params[:pet][:age],
       sex:    params[:pet][:sex],
       shelter_id: params[:pet][:shelter_id],
