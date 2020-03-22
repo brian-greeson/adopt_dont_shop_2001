@@ -24,6 +24,30 @@ RSpec.describe "when user " do
     expect(current_path).to eq("/pets/#{pet_1.id}/edit")
   end
 
+  it "visits Pets page sees a link to update each pet" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    pet_1 = Pet.create(
+                              name: "pet 1",
+                              image: "5558679305.jpg",
+                              age: 9,
+                              sex: "male",
+                              shelter_id: shelter_1.id
+                            )
+
+    visit "/pets/"
+    within(".pet_#{pet_1.id}_details") do
+      click_on "Update Pet"
+    end
+
+    expect(current_path).to eq("/pets/#{pet_1.id}/edit")
+  end
+
   it "visits pet edit page they can edit pet" do
     image_filename = "5c6a.gif"
     shelter_1 = Shelter.create(
