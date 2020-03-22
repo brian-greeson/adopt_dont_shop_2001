@@ -1,3 +1,6 @@
+<%= link_to "Pets Index", "/pets" %>
+<%= link_to "Shelters Index", "/shelters" %>
+
 <%= form_tag "/shelters/#{@shelter.id}/pets" do %>
   <%= label_tag :image %>
   <%= text_field_tag :image %>
@@ -15,4 +18,9 @@
   <%= text_field_tag :sex %>
   <br/>
   <%= submit_tag 'Create Pet' %>
+  <br/>
+  <br/>
+  <br/>
+
+  <%= link_to "Back to Shelter", "/shelters/#{@shelter.id}" %>
 <% end %>

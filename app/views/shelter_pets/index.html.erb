@@ -1,3 +1,6 @@
+<%= link_to "Pets Index", "/pets" %>
+<%= link_to "Shelters Index", "/shelters" %>
+
 <h1>Adoptable Pets</h1>
 
   <% @shelter.pets.each do |pet| %>
@@ -8,3 +11,4 @@
   <% end %>
 
 <%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %>
+<%= link_to "Back to Shelter", "/shelters/#{@shelter.id}" %>

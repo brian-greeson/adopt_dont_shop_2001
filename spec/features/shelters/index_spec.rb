@@ -15,8 +15,6 @@ RSpec.describe "test shelters index page", type: :feature do
                                       zip: "21044")
 
     visit "/shelters"
-    
-    save_and_open_page
 
     expect(page).to have_content(parkside_shelter.name)
     expect(page).to have_content(lakeside_shelter.name)
@@ -25,7 +23,25 @@ RSpec.describe "test shelters index page", type: :feature do
       click_link "Edit Shelter"
     end
 
-
     expect(current_path).to eq("/shelters/#{parkside_shelter.id}/edit")
+
+    fill_in "Name", with: "Riverside Shelter"
+    fill_in "Address", with: "3197 Sutherland Parkway"
+    fill_in "City", with: "Riverside"
+    fill_in "State", with: "California"
+    fill_in "Zip", with: "90217"
+
+    click_button "Submit"
+
+    expect(current_path).to eq("/shelters/#{parkside_shelter.id}")
+
+    visit "/shelters"
+
+    within "#shelter-#{parkside_shelter.id}" do
+      click_link "Delete Shelter"
+    end
+
+    expect(page).to have_content(lakeside_shelter.name)
+    expect(page).to_not have_content(parkside_shelter.name)
   end
 end
