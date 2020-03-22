@@ -23,7 +23,7 @@ RSpec.describe "when a user" do
 
     expect(current_path).to eq("/pets")
     expect(page).to_not have_content(pet_1.name)
-    expect(Pet.find(pet_1.id)).to eq(nil)
+    expect(Pet.where(id: pet_1.id)).to eq([])
   end
 
 end
