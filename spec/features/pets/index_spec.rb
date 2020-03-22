@@ -68,8 +68,6 @@ RSpec.describe "test pets index page", type: :feature do
       click_link "Delete Pet"
     end
 
-    save_and_open_page
-
     expect(page).to have_content(caesar.name)
     expect(page).to_not have_content(livia.name)
   end

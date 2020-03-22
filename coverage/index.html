@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-03-22T07:34:10-06:00">2020-03-22T07:34:10-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-03-22T07:59:13-06:00">2020-03-22T07:59:13-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>33</b> files in total.
-    <b>324</b> relevant lines. 
-    <span class="green"><b>324</b> lines covered</span> and
+    <b>325</b> relevant lines. 
+    <span class="green"><b>325</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -77,7 +77,7 @@
         <td>21</td>
         <td>21</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>1.9</td>
       </tr>
       
       <tr>
@@ -273,9 +273,9 @@
       <tr>
         <td class="strong"><a href="#217cf47ea290b121bac6e5994b481d5f2ed32516" class="src_link" title="spec/features/pets/index_spec.rb">spec/features/pets/index_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>76</td>
-        <td>36</td>
-        <td>36</td>
+        <td>74</td>
+        <td>35</td>
+        <td>35</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -343,9 +343,9 @@
       <tr>
         <td class="strong"><a href="#50b16b08e15e3d1311ac724c76bd79dc742cc7d3" class="src_link" title="spec/features/shelters/show_spec.rb">spec/features/shelters/show_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>26</td>
-        <td>12</td>
-        <td>12</td>
+        <td>29</td>
+        <td>14</td>
+        <td>14</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -670,8 +670,8 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="4">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="4">
+          <span class="hits">7</span>
           
           <code class="ruby">    @shelters = Shelter.all</code>
         </li>
@@ -2799,8 +2799,8 @@
     <h3>spec/features/pets/index_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>36</b> relevant lines. 
-      <span class="green"><b>36</b> lines covered</span> and
+      <b>35</b> relevant lines. 
+      <span class="green"><b>35</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3231,34 +3231,22 @@
         <li class="covered" data-hits="1" data-linenumber="71">
           <span class="hits">1</span>
           
-          <code class="ruby">    save_and_open_page</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="72">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="73">
-          <span class="hits">1</span>
-          
           <code class="ruby">    expect(page).to have_content(caesar.name)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="74">
+        <li class="covered" data-hits="1" data-linenumber="72">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to_not have_content(livia.name)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="75">
+        <li class="never" data-hits="" data-linenumber="73">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="76">
+        <li class="never" data-hits="" data-linenumber="74">
           
           
           <code class="ruby">end</code>
@@ -4792,8 +4780,8 @@
     <h3>spec/features/shelters/show_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>12</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>14</b> relevant lines. 
+      <span class="green"><b>14</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -4900,7 +4888,7 @@
         <li class="covered" data-hits="1" data-linenumber="17">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit &quot;/shelters/#{parkside_shelter.id}&quot;</code>
+          <code class="ruby">    visit &quot;/shelters&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
@@ -4912,46 +4900,64 @@
         <li class="covered" data-hits="1" data-linenumber="19">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_content(parkside_shelter.name)</code>
+          <code class="ruby">    within &quot;#shelters-#{parkside_shelter.id}&quot;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="20">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_content(parkside_shelter.address)</code>
+          <code class="ruby">      click_link &quot;Parkside Shelter&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="21">
           
-          <code class="ruby">    expect(page).to have_content(parkside_shelter.city)</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="22">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_content(parkside_shelter.state)</code>
+          <code class="ruby">    expect(page).to have_content(parkside_shelter.name)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_content(parkside_shelter.zip)</code>
+          <code class="ruby">    expect(page).to have_content(parkside_shelter.address)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
+          <code class="ruby">    expect(page).to have_content(parkside_shelter.city)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(parkside_shelter.state)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(parkside_shelter.zip)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
+          
           <code class="ruby">    expect(page).to_not have_content(lakeside_shelter.name)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="29">
           
           
           <code class="ruby">end</code>

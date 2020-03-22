@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "test shelters show page", type: :feature do
-  it "shows a specific shelter on show page" do
+  it "shows a specific shelter accessible by it's name from shelter index" do
     parkside_shelter = Shelter.create(name: "Parkside Shelter",
                                       address: "1234 Market Street",
                                       city: "Denver",
@@ -14,7 +14,10 @@ RSpec.describe "test shelters show page", type: :feature do
                                       state: "Maryland",
                                       zip: "21044")
 
-    visit "/shelters/#{parkside_shelter.id}"
+    visit "/shelters"
+
+    within "#shelters-#{parkside_shelter.id}"
+      click_link "Parkside Shelter"
 
     expect(page).to have_content(parkside_shelter.name)
     expect(page).to have_content(parkside_shelter.address)
