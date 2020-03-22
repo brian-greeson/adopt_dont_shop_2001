@@ -5,7 +5,7 @@
     <a class="name"href="/pets/<%= @pet.id %>/"><%= @pet.name %></a>
     <p class="age"><%= @pet.age %></p>
     <p class="sex"><%= @pet.sex %></p>
-    <a class="shelter"href="/shelters/<%= @pet.shelter.id %>/"><%= @pet.shelter.name %></a>
+    <%= link_to @pet.shelter.name, show_shelters_path(@pet.shelter), class: 'shelter' %>
     <p class="status"><%= @pet.adoption_status %></p>
     <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: "delete" %>
   </article>
