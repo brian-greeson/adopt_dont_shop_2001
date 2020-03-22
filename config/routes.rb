@@ -23,11 +23,11 @@ Rails.application.routes.draw do
 
   post '/shelters/:shelter_id/pets', to: 'pets#create'
 
-  get '/pets/:id/edit', to: 'pets#edit'
+  get '/pets/:id/edit', to: 'pets#edit', as: 'edit_pets'
 
-  patch '/pets/:id', to: 'pets#update'
+  patch '/pets/:id', to: 'pets#update', as: 'update_pets'
 
-  delete '/pets/:id', to: 'pets#destroy'
+  delete '/pets/:id', to: 'pets#destroy', as: 'delete_pets'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'shelters#index'
 end
