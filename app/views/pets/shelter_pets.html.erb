@@ -7,6 +7,7 @@
     <p class="age"><%= pet.age %></p>
     <p class="sex"><%= pet.sex %></p>
     <%= link_to pet.shelter.name, show_shelters_path(pet.shelter), class: 'shelter' %>
+    <%= link_to "Update Pet", edit_pets_path(pet) %>
     <%= link_to "Delete Pet", delete_pets_path(pet), method: "delete" %>
   </article>
 <% end %>
