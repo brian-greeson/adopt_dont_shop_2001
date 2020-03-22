@@ -33,7 +33,7 @@ RSpec.describe "when user " do
                               zip: "01234"
                             )
     shelter_2 = Shelter.create(
-                              name: "shelter 1",
+                              name: "shelter 2",
                               address: "111 shelter dr",
                               city: "Shelterville",
                               state: "Sheltelvania",
@@ -56,12 +56,12 @@ RSpec.describe "when user " do
                     )
 
     visit "/pets/#{pet_1.id}/edit"
-
+    save_and_open_page
     fill_in "pet[name]", with: pet_2.name
     fill_in "pet[age]", with: pet_2.age
     fill_in "pet[sex]", with: pet_2.sex
     fill_in "pet[description]", with: pet_2.description
-    select shelter_2.name, from: "pet[shelter]"
+    select shelter_2.name, from: "pet[shelter_id]"
     attach_file "pet[image]", "/Users/briangreeson/Pictures/puppies/5c6a.gif"
     click_on "Update Pet"
 
