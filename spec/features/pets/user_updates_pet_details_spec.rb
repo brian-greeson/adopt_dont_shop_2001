@@ -24,7 +24,7 @@ RSpec.describe "when user " do
     expect(current_path).to eq("/pets/#{pet_1.id}/edit")
   end
 
-  xit "visits pet edit page they can edit pet" do
+  it "visits pet edit page they can edit pet" do
     shelter_1 = Shelter.create(
                               name: "shelter 1",
                               address: "111 shelter dr",
@@ -55,7 +55,7 @@ RSpec.describe "when user " do
                       shelter_id: shelter_2.id
                     )
 
-    visit "pets/#{pet_1.id}/edit"
+    visit "/pets/#{pet_1.id}/edit"
 
     fill_in "pet[name]", with: pet_2.name
     fill_in "pet[age]", with: pet_2.age
