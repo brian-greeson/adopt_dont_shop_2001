@@ -25,6 +25,7 @@ RSpec.describe "when user " do
   end
 
   it "visits pet edit page they can edit pet" do
+    image_filename = "5c6a.gif"
     shelter_1 = Shelter.create(
                               name: "shelter 1",
                               address: "111 shelter dr",
@@ -48,7 +49,7 @@ RSpec.describe "when user " do
                             )
     pet_2 = Pet.new(
                       name: "pet 2",
-                      image: "5558679305.jpg",
+                      image: image_filename,
                       age: 10,
                       sex: "female",
                       description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
@@ -62,7 +63,7 @@ RSpec.describe "when user " do
     fill_in "pet[sex]", with: pet_2.sex
     fill_in "pet[description]", with: pet_2.description
     select shelter_2.name, from: "pet[shelter_id]"
-    attach_file "pet[image]", "/Users/briangreeson/Pictures/puppies/5c6a.gif"
+    attach_file "pet[image]", "/Users/briangreeson/Pictures/puppies/#{image_filename}"
     click_on "Update Pet"
 
     expect(page).to have_current_path("/pets/#{pet_1.id}")
