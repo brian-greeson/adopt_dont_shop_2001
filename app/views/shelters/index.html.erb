@@ -2,4 +2,5 @@
 <a href="/shelters/new">Create Shelter</a>
 <% @shelters.each do |shelter| %>
 <a href="/shelters/<%= shelter.id %>/"><%= shelter.name %></a>
+<a href="/shelters/<%= shelter.id %>/edit">Update Shelter</a>
 <% end %>
