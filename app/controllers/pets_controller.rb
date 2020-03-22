@@ -39,16 +39,28 @@ class PetsController < ApplicationController
   end
 
   def update
+    image = params[:pet][:image]
+    save_pet_image(image)
+
     Pet.find(params[:id]).update(
-      binding.pry
-      # name:     params[:pet][:name],
-      # image:  params[:pet][:image],
-      # age:     params[:pet][:age],
-      # sex:    params[:pet][:sex],
-      # shelter_id:      params[:pet][:shelter_id]
+      name:     params[:pet][:name],
+      image:  image.original_filename,
+      age:     params[:pet][:age],
+      sex:    params[:pet][:sex],
+      shelter_id: params[:pet][:shelter_id],
+      description: params[:pet][:description]
     )
 
-    redirect_to '/pets'
+    redirect_to "/pets/#{params[:id]}"
+  end
+
+
+  private
+
+  def save_pet_image(uploaded_image)
+    File.open(Rails.root.join('public', uploaded_image.original_filename), 'wb') do |file|
+      file.write(uploaded_image.read)
+    end
   end
   #
   #
