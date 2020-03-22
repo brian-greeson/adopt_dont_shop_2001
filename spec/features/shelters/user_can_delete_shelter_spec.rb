@@ -33,9 +33,8 @@ RSpec.describe "when user", type: :feature do
                               zip: "01234"
                             )
     visit "/shelters/"
-
-    expect(page).to have_link'Delete Shelter', href: "/shelters/#{shelter_1.id}/"
-    expect(page).to have_link'Delete Shelter', href: "/shelters/#{shelter_2.id}/"
+    expect(page).to have_link'Delete Shelter', href: "/shelters/#{shelter_1.id}"
+    expect(page).to have_link'Delete Shelter', href: "/shelters/#{shelter_2.id}"
   end
 
   it "clicks delete link a delete request is sent" do
