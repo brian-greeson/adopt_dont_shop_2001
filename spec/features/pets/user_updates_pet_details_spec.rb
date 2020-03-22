@@ -56,7 +56,7 @@ RSpec.describe "when user " do
                     )
 
     visit "/pets/#{pet_1.id}/edit"
-    save_and_open_page
+    
     fill_in "pet[name]", with: pet_2.name
     fill_in "pet[age]", with: pet_2.age
     fill_in "pet[sex]", with: pet_2.sex
