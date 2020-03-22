@@ -7,4 +7,5 @@
     <p class="sex"><%= @pet.sex %></p>
     <a class="shelter"href="/shelters/<%= @pet.shelter.id %>/"><%= @pet.shelter.name %></a>
     <p class="status"><%= @pet.adoption_status %></p>
+    <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: "delete" %>
   </article>
