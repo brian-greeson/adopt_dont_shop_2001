@@ -1,6 +1,6 @@
 <h1>Update Pet</h1>
 <%= form_with model: @pet,
-              url: "/pets/#{@pet.id}/update",
+              url: "/pets/#{@pet.id}",
               method: "patch",
               local: true do |form| %>
   <%= form.label :name %>
