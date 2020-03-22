@@ -2,7 +2,7 @@
 <a href="/shelters/<%= @shelter_id %>/pets/new">Create Pet</a>
 <% @pets.each do |pet| %>
   <article class="pet_<%= pet.id %>_details">
-    <%= image_tag("/#{pet.image}") %>
+    <img src="/<%= pet.image %>" alt="NotFound">
     <a class="name"href="/pets/<%= pet.id %>/"><%= pet.name %></a>
     <p class="age"><%= pet.age %></p>
     <p class="sex"><%= pet.sex %></p>
