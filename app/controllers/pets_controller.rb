@@ -19,9 +19,7 @@ class PetsController < ApplicationController
 
   def create
     uploaded_image = params[:pet][:image]
-    File.open(Rails.root.join('public', uploaded_image.original_filename), 'wb') do |file|
-      file.write(uploaded_image.read)
-    end
+    save_pet_image(uploaded_image)
 
     Pet.create(
         name:   params[:pet][:name],
@@ -33,23 +31,37 @@ class PetsController < ApplicationController
     )
     redirect_to "/shelters/#{params[:shelter_id]}/pets"
   end
+
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def update
+    if uploaded_image = params[:pet][:image]
+      save_pet_image(uploaded_image)
+      Pet.find(params[:id]).update(image:  uploaded_image.original_filename)
+    end
+
+    Pet.find(params[:id]).update(
+      name:     params[:pet][:name],
+      age:     params[:pet][:age],
+      sex:    params[:pet][:sex],
+      shelter_id: params[:pet][:shelter_id],
+      description: params[:pet][:description]
+    )
+
+    redirect_to "/pets/#{params[:id]}"
+  end
+
+
+  private
+
+  def save_pet_image(uploaded_image)
+    File.open(Rails.root.join('public', uploaded_image.original_filename), 'wb') do |file|
+      file.write(uploaded_image.read)
+    end
+  end
   #
-  #
-  # def update
-  #   Pet.find(params[:id]).update(
-  #     name:     params[:pet][:name],
-  #     image:  params[:pet][:image],
-  #     age:     params[:pet][:age],
-  #     sex:    params[:pet][:sex],
-  #     shelter_id:      params[:pet][:shelter_id]
-  #   )
-  #
-  #   redirect_to '/pets'
-  # end
-  #
-  # def edit
-  #   @pet = Pet.find(params[:id])
-  # end
   #
   # def destroy
   #   Pet.destroy(params[:id])

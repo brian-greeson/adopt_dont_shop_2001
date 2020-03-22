@@ -1,79 +1,84 @@
-# require "rails_helper"
-#
-# RSpec.describe "when user", type: :feature do
-#
-#
-#   it "visit show shelter page can click update shelter link" do
-#     shelter_1 = Shelter.create(
-#                               name: "shelter 1",
-#                               address: "111 shelter dr",
-#                               city: "Shelterville",
-#                               state: "Sheltelvania",
-#                               zip: "01234"
-#                             )
-#     visit "/shelters/#{shelter_1.id}"
-#
-#     expect(page).to have_link('Update Shelter')
-#   end
-#
-#   it "clicks on create shelter link is shown update shelter form" do
-#     shelter_1 = Shelter.create(
-#                               name: "shelter 1",
-#                               address: "111 shelter dr",
-#                               city: "Shelterville",
-#                               state: "Sheltelvania",
-#                               zip: "01234"
-#                             )
-#     visit "/shelters/#{shelter_1.id}"
-#     click_link 'Update Shelter'
-#
-#     expect(page).to have_current_path("/shelters/#{shelter_1.id}/edit")
-#   end
-#
-#   it "enters form information and clicks create shelter, new shelter is created" do
-#     shelter_1 = Shelter.create(
-#                               name: "shelter 1",
-#                               address: "111 shelter dr",
-#                               city: "Shelterville",
-#                               state: "Sheltelvania",
-#                               zip: "01234"
-#                             )
-#     shelter_2 = Shelter.new(
-#                               name: "Sheltertron 5000",
-#                               address: "place",
-#                               city: "placeville",
-#                               state: "placeington",
-#                               zip: "09876"
-#                             )
-#     visit "/shelters/#{shelter_1.id}/edit"
-#
-#     expect(find_field("shelter[name]").value).to have_content(shelter_1.name)
-#     expect(find_field("shelter[address]").value).to have_content(shelter_1.address)
-#     expect(find_field("shelter[city]").value).to have_content(shelter_1.city)
-#     expect(find_field("shelter[state]").value).to have_content(shelter_1.state)
-#     expect(find_field("shelter[zip]").value).to have_content(shelter_1.zip)
-#
-#     expect(find_field("shelter[name]").value).to have_no_content(shelter_2.name)
-#     expect(find_field("shelter[address]").value).to have_no_content(shelter_2.address)
-#     expect(find_field("shelter[city]").value).to have_no_content(shelter_2.city)
-#     expect(find_field("shelter[state]").value).to have_no_content(shelter_2.state)
-#     expect(find_field("shelter[zip]").value).to have_no_content(shelter_2.zip)
-#
-#     page.fill_in 'shelter[name]', with: shelter_2.name
-#     page.fill_in 'shelter[address]', with: shelter_2.address
-#     page.fill_in 'shelter[city]', with: shelter_2.city
-#     page.fill_in 'shelter[state]', with: shelter_2.state
-#     page.fill_in 'shelter[zip]', with: shelter_2.zip
-#     click_button 'Submit'
-#
-#     expect(page).to have_current_path('/shelters')
-#
-#     visit "/shelters/#{shelter_1.id}"
-#
-#     expect(page).to have_content(shelter_2.name)
-#     expect(page).to have_content(shelter_2.address)
-#     expect(page).to have_content(shelter_2.city)
-#     expect(page).to have_content(shelter_2.state)
-#     expect(page).to have_content(shelter_2.zip)
-#   end
-# end
+require "rails_helper"
+
+RSpec.describe "when user " do
+
+  it "visits Pet show page sees a link to update pet" do
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    pet_1 = Pet.create(
+                              name: "pet 1",
+                              image: "5558679305.jpg",
+                              age: 9,
+                              sex: "male",
+                              shelter_id: shelter_1.id
+                            )
+
+    visit "pets/#{pet_1.id}"
+    click_on "Update Pet"
+
+    expect(current_path).to eq("/pets/#{pet_1.id}/edit")
+  end
+
+  it "visits pet edit page they can edit pet" do
+    image_filename = "5c6a.gif"
+    shelter_1 = Shelter.create(
+                              name: "shelter 1",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    shelter_2 = Shelter.create(
+                              name: "shelter 2",
+                              address: "111 shelter dr",
+                              city: "Shelterville",
+                              state: "Sheltelvania",
+                              zip: "01234"
+                            )
+    pet_1 = Pet.create(
+                              name: "pet 1",
+                              image: "5558679305.jpg",
+                              age: 9,
+                              sex: "male",
+                              shelter_id: shelter_1.id
+                            )
+    pet_2 = Pet.new(
+                      name: "pet 2",
+                      image: image_filename,
+                      age: 10,
+                      sex: "female",
+                      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                      shelter_id: shelter_2.id
+                    )
+
+    visit "/pets/#{pet_1.id}/edit"
+
+    fill_in "pet[name]", with: pet_2.name
+    fill_in "pet[age]", with: pet_2.age
+    fill_in "pet[sex]", with: pet_2.sex
+    fill_in "pet[description]", with: pet_2.description
+    select shelter_2.name, from: "pet[shelter_id]"
+    attach_file "pet[image]", "/Users/briangreeson/Pictures/puppies/#{image_filename}"
+    click_on "Update Pet"
+
+    expect(page).to have_current_path("/pets/#{pet_1.id}")
+
+    pet_result = Pet.find(pet_1.id)
+
+    expect(pet_result.name).to eq(pet_2.name)
+    expect(pet_result.age).to eq(pet_2.age)
+    expect(pet_result.sex).to eq(pet_2.sex)
+    expect(pet_result.description).to eq(pet_2.description)
+    expect(pet_result.image).to eq(pet_2.image)
+    expect(pet_result.shelter_id).to eq(pet_2.shelter_id)
+
+  end
+
+
+
+end

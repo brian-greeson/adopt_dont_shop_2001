@@ -1,0 +1,17 @@
+<h1>Update Pet</h1>
+<%= form_with model: @pet,
+              url: "/pets/#{@pet.id}",
+              method: "patch",
+              local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.label :sex %>
+  <%= form.text_field :sex %>
+  <%= form.collection_select :shelter_id, Shelter.all, :id, :name%>
+  <%= form.file_field :image %>
+  <%= form.submit "Update Pet" %>
+<% end %>
