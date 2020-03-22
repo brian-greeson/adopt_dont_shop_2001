@@ -1,4 +1,4 @@
-<h1><%= @shelter.name %></h1>
+<h1><%= link_to @shelter.name, show_shelters_path(@shelter), class: 'shelter' %></h1>
 <p><%= @shelter.address %>, <%= @shelter.city %>, <%= @shelter.state %>, <%= @shelter.zip %></p>
 <a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a>
 <a href="/shelters/<%= @shelter.id %>" data-method="DELETE">Delete Shelter</a>
