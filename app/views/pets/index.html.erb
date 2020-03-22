@@ -6,5 +6,6 @@
     <p class="age"><%= pet.age %></p>
     <p class="sex"><%= pet.sex %></p>
     <a class="shelter"href="/shelters/<%= pet.shelter.id %>/"><%= pet.shelter.name %></a>
+    <%= link_to "Update Pet", edit_pets_path(pet) %>
   </article>
 <% end %>
