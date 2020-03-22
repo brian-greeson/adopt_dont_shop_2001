@@ -1,9 +1,12 @@
+<%= link_to "Pets Index", "/pets" %>
+<%= link_to "Shelters Index", "/shelters" %>
+
 <h1> All Pets </h1>
 
 <% @pets.each do |pet| %>
   <section id="pets-<%=pet.id%>">
     <%= image_tag pet.image %>
-    <h3><%= pet.name %></h3>
+    <%= link_to pet.name, "/pets/#{pet.id}" %>
     <h5><%= pet.city %></h5>
     <h5><%= pet.approx_age %></h5>
     <h5><%= pet.description %></h5>
