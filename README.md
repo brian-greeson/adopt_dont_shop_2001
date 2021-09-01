@@ -20,7 +20,7 @@
 
 ## Databases
 
-![Database Schema](https://imgur.com/WMaDVhJ)
+![Database Schema](https://i.imgur.com/WMaDVhJ.png)
 
 ## Running Locally
 
