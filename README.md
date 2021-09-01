@@ -24,7 +24,7 @@
 
 ## Running Locally
 
-git clone git@github.com:mlynch5187adopt_dont_shop_2001.git # or clone your own fork
+git clone git@github.com:mlynch5187/adopt_dont_shop_2001.git # or clone your own fork
 cd adopt_dont_shop_2001
 bundle install
 rails s
